@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/04 10:23:51 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/04 13:19:24 by aleon-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,13 @@ int	main(void)
 	printf("strcpy(%s, %s): %s\n", dst, src, strcpy(dst, src));
 	printf("ft_strcpy(%s, %s): %s\n", dst, src, ft_strcpy(dst, src));
 	free(src); free(dst);
+	char	*s1;
+	char	*s2;
+
+	s1 = "Hola";
+	s2 = "HolA";
+	printf("strcmp: %s, ft_strcmp: %s\n", strcmp(s1, s2), ft_strcmp(s1, s2));
+	s2 = "Holaa";
+	printf("strcmp: %s, ft_strcmp: %s\n", strcmp(s1, s2), ft_strcmp(s1, s2));
 	return (0);
 }

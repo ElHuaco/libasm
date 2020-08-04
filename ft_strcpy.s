@@ -33,5 +33,5 @@ _start_loop:
 return:
 		mov			rax, rdi		;move rdi to rax to return it
 		pop			rcx			;Deallocate in reverse order convention
-		pop			rdx			;
-		ret						;
+		pop			rdx
+		ret			
