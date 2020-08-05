@@ -18,20 +18,16 @@
 		section			.text
 		global			_ft_strcpy
 _ft_strcpy:
-		push			rdx			;64 bit x86 C Calling Convention
-		push			rcx			;idem
-		cmp			rsi, 0			;check if src is (null)
-		je			return			;return immediately then
-		mov			rcx, 0			;otherwise start counter
+		cmp			rsi, 0			;Check if src is (null)
+		je			return			; return immediately then.
+		mov			rcx, 0			;Otherwise start counter.
 _start_loop:
-		mov			dl, byte [rsi + rcx]	;store in dl char at rsi + rcx (src[i])
-		mov			byte [rdi + rcx], dl	;put that char in rdi + rcx (dst[i])
-		cmp			dl, 0			;check if we stored '\0'
-		je			return			;we are finished then
-		inc			rcx			;otherwise increase the counter
-		jmp			_start_loop		;start the loop again
+		mov			dl, byte [rsi + rcx]	;Put in dl char at rsi + rcx (dl=src[i]).
+		mov			byte [rdi + rcx], dl	;Put that char in rdi + rcx (dst[i]=dl).
+		cmp			dl, 0			;Check if we put '\0'
+		je			return			; we are finished then.
+		inc			rcx			;Otherwise increase the counter.
+		jmp			_start_loop		;Start the loop again.
 return:
-		mov			rax, rdi		;move rdi to rax to return it
-		pop			rcx			;Deallocate in reverse order convention
-		pop			rdx
+		mov			rax, rdi		;Move rdi to rax to return it.
 		ret			

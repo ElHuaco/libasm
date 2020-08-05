@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 03:12:58 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 03:51:22 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,15 @@ int	main(void)
 	printf("strcmp: %d, ft_strcmp: %d\n", strcmp(s1, s2), ft_strcmp(s1, s2));
 	s2 = s1;
 	printf("strcmp: %d, ft_strcmp: %d\n", strcmp(s1, s2), ft_strcmp(s1, s2));
+	
+	s1 = malloc(sizeof(char) * 9); s1 = "EYCHAVAL";
+	printf("strdup(%s): %s\t", s1, strdup(s1));
+	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
+	s1 = "";
+	printf("strdup(%s): %s\t", s1, strdup(s1));
+	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
+	s1 = "1234567890909090909990909090909090";
+	printf("strdup(%s): %s\t", s1, strdup(s1));
+	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
 	return (0);
 }
