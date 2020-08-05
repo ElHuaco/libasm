@@ -19,25 +19,24 @@
 _ft_read:
 			cmp				rsi, 0			;If buff is (null),
 			je				_null_return		; return (-1) and end.
-			push				rsi			;Save params before fstat call
+			push				rsi
 			push				rdx
 			mov				rax, 0x20000BD		;fstat call
 			syscall
-			pop				rdx			;Restore params
+			pop				rdx
 			pop				rsi
-			cmp				rax, 0			;If there was an error during syscall,
-			jna				_syscallerror_return	; rax is an Error Code, i.e., not 0.
+			jc				_syscallerror_return	;If error in syscall, carry flag is set.
 			mov				rax, 0x2000003		;Otherwise call read.
 			syscall
-			cmp				rax, 0			;If there was an error during syscall,
-			jna				_syscallerror_return	; rax is an Error Code, i.e., not 0.
+			jc				_syscallerror_return	;If error in syscall,  carry flag is set.
 			ret							;Otherwise we are correctly finished.
 _null_return:
 			mov				rax, -1
 			ret
 _syscallerror_return:
 			push				rdi
-			mov				rdi, rax		;Need Error Code in rax as param to error?
-			call				___error		;This supposedly sets errno
+			mov				rdi, rax
+			call				___error		;returns rax as address of errno
+			mov				[rax], rdi		;Sets errno in the pointer
 			pop				rdi
-			ret
+			jmp				_null_return

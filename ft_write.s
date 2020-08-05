@@ -25,17 +25,19 @@ _ft_write:
 			syscall
 			pop				rdx			;Put back original rdx, rsi.
 			pop				rsi
-			cmp				rax, 0			;If there was an error during syscall,
-			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			jc				_syscallerror_return	;If syscall error, carry flag is set.
 			mov				rax, 0x2000004		;Otherwise call write.
 			syscall
-			cmp				rax, 0			;If there was an error during syscall,
-			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			jc				_syscallerror_return	;If syscall error, carry flag is set.
 			ret							;Otherwise we are finished correctly.
 _null_return:
 			mov				rax, -1
 			ret
 _syscallerror_return:
-			call				___error		;This supposedly sets errno
+			push				rdi
+			mov				rdi, rax		;Save errno in rdi.
+			call				___error		;rax points now to errno.
+			mov				[rax], rdi
+			pop				rdi
 			jmp				_null_return
 			
