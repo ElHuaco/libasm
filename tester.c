@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 03:51:22 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 05:40:21 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,10 @@ int	main(void)
 	s1 = "1234567890909090909990909090909090";
 	printf("strdup(%s): %s\t", s1, strdup(s1));
 	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
+	int fd = open("write.txt", O_WRONLY);
+	write(fd, "write escribe\n", 14);
+	ft_write(fd, "ft_write escribe\n", 17);
+	close(fd);
+	system("cat txt");
 	return (0);
 }
