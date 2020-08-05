@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 06:04:40 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 11:22:18 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,22 @@ int	main(void)
 	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
 	system("touch write.txt");
 	int fd = open("write.txt", O_WRONLY);
-	write(fd, "write escribe\n", 14);
+	write(fd, "write escribe", 14);
 	ft_write(fd, "ft_write escribe\n", 17);
 	close(fd);
+	printf("====cat del archivo escrito====\n");
 	system("cat write.txt");
-	buff = malloc(sizeof(char) * 100);
+	printf("====fin del archivo escrito====\n");
+	fd = open("write.txt", O_RDONLY);
+	void *buff = malloc(sizeof(char) * 100);
 	read(fd, buff, 60);
-	printf("read de write.txt:%s\n", buff);
-	free(buff); buff = malloc(sizeof(char) * 100);
+	printf("====read de write.txt====\n%s\n====fin de read====\n", buff);
+	free(buff); close(fd);
+	fd = open("write.txt", O_RDONLY);
+	buff = malloc(sizeof(char) * 100);
 	ft_read(fd, buff, 60);
-	ft_printf("ft_read de write.txt:%s\n", buff);
+	printf("====ft_read de write.txt====\n%s\n====fin de ft_read====\n", buff);
 	free(buff);
+	close(fd);
 	return (0);
 }
