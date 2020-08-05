@@ -15,20 +15,25 @@
 ;label			interactions			operands		comment
 			section				.text
 			global				_ft_read
+			extern				___error
 _ft_read:
 			cmp				rsi, 0			;If buff is (null),
-			je				_error_return		; return (-1) and end.
+			je				_null_return		; return (-1) and end.
 			push				rsi			;Save params before fstat call
 			push				rdx
 			mov				rax, 0x20000BD		;fstat call
-			syscall							;errno aqui
+			syscall
 			pop				rdx			;Restore params
 			pop				rsi
-			cmp				rax, 9			;Check that no EBADF happened
-			je				_error_return		;errno aqui
-			mov				rax, 0x2000003		;read call
+			cmp				rax, 0			;If there was an error during syscall,
+			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			mov				rax, 0x2000003		;Otherwise call read.
 			syscall
-			ret
-_error_return:
+			cmp				rax, 0			;If there was an error during syscall,
+			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			ret							;Otherwise we are correctly finished.
+_null_return:
 			mov				rax, -1
 			ret
+_syscallerror_return:
+			
