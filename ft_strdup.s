@@ -17,11 +17,11 @@
 			extern				_ft_strcpy
 			extern				_malloc
 _ft_strdup:
-			cmp				rdi, 0			;If s1 is (null), restore rdi
-			je				_null_return		; and return 0.
+			cmp				rdi, 0			;If s1 is (null),
+			je				_null_return		; return 0.
 			push				rdi			;Saving rdi before strlen call.
 			call				_ft_strlen		;Now we have strlen(s1) in rax.
-			pop				rdi			;Restoring rdi.
+			pop				rdi			;Restore rdi.
 			inc				rax			;Need to malloc len+1 for the '\0'.
 			push				rdi			;Saving rdi before malloc call.
 			mov				rdi, rax		;Need to pass len+1 as param to malloc.
