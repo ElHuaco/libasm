@@ -26,11 +26,11 @@ _ft_read:
 			pop				rdx			;Restore params
 			pop				rsi
 			cmp				rax, 0			;If there was an error during syscall,
-			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			jna				_syscallerror_return	; rax is an Error Code, i.e., not 0.
 			mov				rax, 0x2000003		;Otherwise call read.
 			syscall
 			cmp				rax, 0			;If there was an error during syscall,
-			jl				_syscallerror_return	; rax is an Error Code, i.e., less than 0.
+			jna				_syscallerror_return	; rax is an Error Code, i.e., not 0.
 			ret							;Otherwise we are correctly finished.
 _null_return:
 			mov				rax, -1
