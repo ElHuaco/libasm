@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 11:22:18 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 12:46:13 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ int	main(void)
 	printf("====ft_read de write.txt====\n%s\n====fin de ft_read====\n", buff);
 	free(buff);
 	close(fd);
+	printf("read de fd = -1"); read(-1, buff, 60);printf("%s\n", strerror(errno));errno = 9;
+	printf("ft_read de fd = -1\n"); ft_read(-1, buff, 60);printf("%s\n", strerror(errno));
 	return (0);
 }

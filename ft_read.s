@@ -36,4 +36,8 @@ _null_return:
 			mov				rax, -1
 			ret
 _syscallerror_return:
-			
+			push				rdi
+			mov				rdi, rax		;Need Error Code in rax as param to error?
+			call				___error		;This supposedly sets errno
+			pop				rdi
+			ret

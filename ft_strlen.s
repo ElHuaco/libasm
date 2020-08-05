@@ -16,7 +16,7 @@
 		global		 _ft_strlen
 _ft_strlen:
 		cmp		rdi, 0			;If str is (null), do nothing.
-		je		_end_value
+		je		_end_loop
 		mov		rax, 0			;rax always return value. Here also counter. Set to 0.
 _start_loop:
 		cmp		byte [rdi + rax], 0	;Compare with 0 the byte at rdi + rax.

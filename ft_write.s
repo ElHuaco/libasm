@@ -36,4 +36,6 @@ _null_return:
 			mov				rax, -1
 			ret
 _syscallerror_return:
+			call				___error		;This supposedly sets errno
+			jmp				_null_return
 			

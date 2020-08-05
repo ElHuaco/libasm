@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 04:59:59 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 06:02:12 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 12:38:31 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBASM_H
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <errno.h>
 
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dst, const char *src);
