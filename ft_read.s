@@ -21,11 +21,11 @@ _ft_read:
 			push				rsi			;Save params before fstat call
 			push				rdx
 			mov				rax, 0x20000BD		;fstat call
-			syscall
+			syscall							;errno aqui
 			pop				rdx			;Restore params
 			pop				rsi
 			cmp				rax, 9			;Check that no EBADF happened
-			je				_error_return
+			je				_error_return		;errno aqui
 			mov				rax, 0x2000003		;read call
 			syscall
 			ret

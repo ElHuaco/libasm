@@ -21,13 +21,13 @@ _ft_write:
 			push				rsi			;Save params before fstat syscall.
 			push				rdx
 			mov				rax, 0x20000BD		;Call fstat(fd, buff).
-			syscall
+			syscall							;errno aqui
 			pop				rdx			;Put back original rdx, rsi.
 			pop				rsi
 			cmp				rax, 9			;If errno 9 (EBADF) after fstat, rax=9,
 			je				_error_return		; return -1 (error) in that case.
 			mov				rax, 0x2000004		;Otherwise call write.
-			syscall
+			syscall							;errno aqui
 			ret
 _error_return:
 			mov				rax, -1
