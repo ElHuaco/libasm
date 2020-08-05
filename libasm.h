@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 04:59:59 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 05:29:43 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 06:02:12 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBASM_H
@@ -23,6 +23,7 @@ char	*ft_strcpy(char *dst, const char *src);
 int	ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 size_t	ft_write(int fd, const void *buff, size_t n_bytes);
+size_t	ft_read(int fd, void *buff, size_t n_bytes);
 #endif
 
 

@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 05:51:08 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/05 06:04:40 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,12 @@ int	main(void)
 	ft_write(fd, "ft_write escribe\n", 17);
 	close(fd);
 	system("cat write.txt");
+	buff = malloc(sizeof(char) * 100);
+	read(fd, buff, 60);
+	printf("read de write.txt:%s\n", buff);
+	free(buff); buff = malloc(sizeof(char) * 100);
+	ft_read(fd, buff, 60);
+	ft_printf("ft_read de write.txt:%s\n", buff);
+	free(buff);
 	return (0);
 }
