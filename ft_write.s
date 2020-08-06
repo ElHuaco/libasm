@@ -17,8 +17,6 @@
 			global				_ft_write
 			extern				___error
 _ft_write:
-			cmp				rdi, 0			;Check if buff is (null),
-			je				_null_return		; return -1 (error) in that case.
 			push				rsi			;Save params before fstat syscall.
 			push				rdx
 			mov				rax, 0x20000BD		;Call fstat(fd, buff).
@@ -35,9 +33,9 @@ _null_return:
 			ret
 _syscallerror_return:
 			push				rdi
-			mov				rdi, rax		;Save errno in rdi.
+			mov				rdi, rax		;rax is Error Code after failed syscall
 			call				___error		;rax points now to errno.
-			mov				[rax], rdi
+			mov				[rax], rdi		;Stores Error Code in errno pointer
 			pop				rdi
 			jmp				_null_return
 			

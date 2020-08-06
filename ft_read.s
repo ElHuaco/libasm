@@ -17,8 +17,6 @@
 			global				_ft_read
 			extern				___error
 _ft_read:
-			cmp				rsi, 0			;If buff is (null),
-			je				_null_return		; return (-1) and end.
 			push				rsi
 			push				rdx
 			mov				rax, 0x20000BD		;fstat call
@@ -28,15 +26,15 @@ _ft_read:
 			jc				_syscallerror_return	;If error in syscall, carry flag is set.
 			mov				rax, 0x2000003		;Otherwise call read.
 			syscall
-			jc				_syscallerror_return	;If error in syscall,  carry flag is set.
+			jc				_syscallerror_return	;If error in syscall, carry flag is set.
 			ret							;Otherwise we are correctly finished.
 _null_return:
 			mov				rax, -1
 			ret
 _syscallerror_return:
 			push				rdi
-			mov				rdi, rax
+			mov				rdi, rax		;rax is Error Code after failed syscall
 			call				___error		;returns rax as address of errno
-			mov				[rax], rdi		;Sets errno in the pointer
+			mov				[rax], rdi		;Sets Error Code in the errno pointer
 			pop				rdi
 			jmp				_null_return
