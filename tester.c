@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/06 03:23:31 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/06 04:08:48 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,12 @@ printf("================read==================\n");
 	fd = open("write.txt", O_RDONLY);
 	void *buff = malloc(sizeof(char) * 100);
 	read(fd, buff, 60);
-	printf("====read de write.txt====\n%s\n====fin de read====\n", buff);
+	printf("------read de write.txt-----\n%s\n-----fin de read-----\n", buff);
 	free(buff); close(fd);
 	fd = open("write.txt", O_RDONLY);
 	buff = malloc(sizeof(char) * 100);
 	ft_read(fd, buff, 60);
-	printf("====ft_read de write.txt====\n%s\n====fin de ft_read====\n", buff);
+	printf("-----ft_read de write.txt-----\n%s\n-----fin de ft_read-----\n", buff);
 	free(buff);
 	close(fd);
 	printf("read de fd = -1->"); read(-1, buff, 60);printf("%s\n", strerror(errno));errno = 100;
