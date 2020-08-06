@@ -17,14 +17,7 @@
 			global				_ft_write
 			extern				___error
 _ft_write:
-			push				rsi			;Save params before fstat syscall.
-			push				rdx
-			mov				rax, 0x20000BD		;Call fstat(fd, buff).
-			syscall
-			pop				rdx			;Put back original rdx, rsi.
-			pop				rsi
-			jc				_syscallerror_return	;If syscall error, carry flag is set.
-			mov				rax, 0x2000004		;Otherwise call write.
+			mov				rax, 0x2000004		;Call write.
 			syscall
 			jc				_syscallerror_return	;If syscall error, carry flag is set.
 			ret							;Otherwise we are finished correctly.

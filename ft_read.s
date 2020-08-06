@@ -17,14 +17,7 @@
 			global				_ft_read
 			extern				___error
 _ft_read:
-			push				rsi
-			push				rdx
-			mov				rax, 0x20000BD		;fstat call
-			syscall
-			pop				rdx
-			pop				rsi
-			jc				_syscallerror_return	;If error in syscall, carry flag is set.
-			mov				rax, 0x2000003		;Otherwise call read.
+			mov				rax, 0x2000003		;Call read.
 			syscall
 			jc				_syscallerror_return	;If error in syscall, carry flag is set.
 			ret							;Otherwise we are correctly finished.
