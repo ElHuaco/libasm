@@ -1,0 +1,3 @@
+[submodule "libasm_test"]
+	path = libasm_test
+	url = https://github.com/cacharle/libasm_test
