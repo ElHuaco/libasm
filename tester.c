@@ -6,7 +6,7 @@
 /*   By: aleon-ca <aleon-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 05:02:04 by aleon-ca          #+#    #+#             */
-/*   Updated: 2020/08/05 16:41:28 by alejandro        ###   ########.fr       */
+/*   Updated: 2020/08/06 03:23:31 by alejandro        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main(void)
 {
+printf("===============strlen================\n");
 	char	*str;
 
 	str = "Hola carcacola";
@@ -27,7 +28,7 @@ int	main(void)
 	printf("ft_strlen de %s: %lu\n", str, ft_strlen(str));
 	char	*dst;
 	char	*src;
-
+printf("===============strcpy================\n");
 	dst = malloc(sizeof(char) * 2); dst[0] = 'a'; dst[1] = 'b';
 	src = malloc(sizeof(char) * 2); src[0] = 'c'; src[1] = 'd';
 	printf("strcpy(%s, %s):", dst, src);
@@ -61,17 +62,30 @@ int	main(void)
 	printf(" %s\n", ft_strcpy(dst, src));
 	free(dst); free(src);
 
+printf("===============strcmp================\n");
 	char	*s1;
 	char	*s2;
 
 	s1 = "Hola";
 	s2 = "HolA";
-	printf("strcmp: %d, ft_strcmp: %d\n", strcmp(s1, s2), ft_strcmp(s1, s2));
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n",s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
 	s2 = "Holaa";
-	printf("strcmp: %d, ft_strcmp: %d\n", strcmp(s1, s2), ft_strcmp(s1, s2));
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
 	s2 = s1;
-	printf("strcmp: %d, ft_strcmp: %d\n", strcmp(s1, s2), ft_strcmp(s1, s2));
-	
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 = "bon"; s2 = "";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 = "Lore"; s2 = "";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 = ""; s2 = "asdf";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 ="Lorem ipsum dolor sit amet, consectetur adipiscingelit. Sed in malesuada purus. Etiam a scelerisque massa. Ut non euismod elit. Aliquambibendum dolor mi, id fringilla tellus pulvinar eu. Fusce vel fermentum sem. Crasvolutpat, eros eget rhoncus rhoncus, diam augue egestas dolor, vitae rutrum nisifelis sed purus. Mauris magna ex, mollis non suscipit eu, lacinia ac turpis. Phasellusac tortor et lectus fermentum lobortis eu at mauris. Vestibulum sit amet posueretortor, sit amet consequat amet.";s2 = "";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 = "bonjour"; s2 = "";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+	s1 = "bon"; s2 = "bo";
+	printf("(%s, %s)->strcmp: %d, ft_strcmp: %d\n", s1, s2, strcmp(s1, s2), ft_strcmp(s1, s2));
+printf("===============strdup================\n");
 	s1 = malloc(sizeof(char) * 9); s1 = "EYCHAVAL";
 	printf("strdup(%s): %s\t", s1, strdup(s1));
 	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
@@ -81,6 +95,8 @@ int	main(void)
 	s1 = "1234567890909090909990909090909090";
 	printf("strdup(%s): %s\t", s1, strdup(s1));
 	printf("ft_strdup(%s): %s\n", s1, ft_strdup(s1));
+	
+printf("===============write=================\n");
 	system("touch write.txt");
 	int fd = open("write.txt", O_WRONLY);
 	write(fd, "write escribe", 14);
@@ -89,6 +105,7 @@ int	main(void)
 	printf("====cat del archivo escrito====\n");
 	system("cat write.txt");
 	printf("====fin del archivo escrito====\n");
+printf("================read==================\n");
 	fd = open("write.txt", O_RDONLY);
 	void *buff = malloc(sizeof(char) * 100);
 	read(fd, buff, 60);
